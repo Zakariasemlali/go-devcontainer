@@ -4,17 +4,65 @@
 	"name": "Go",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "mcr.microsoft.com/devcontainers/go:0-1.19-bullseye",
-
+    // "initializeCommand": "./bootsrap.sh",
+    "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
-
 	// Configure tool-specific properties.
 	"customizations": {
 		// Configure properties specific to VS Code.
 		"vscode": {
-			"settings": {},
+			"settings": {
+				"files.eol":"\n",
+				"editor.formatOnSave": true,
+				"go.buildTags": "",
+                "go.toolsEnvVars": {
+                    "CGO_ENABLED": "0"
+                },
+                "go.useLanguageServer": true,
+                "go.testEnvVars": {
+                    "CGO_ENABLED": "1"
+                },
+                "go.testFlags": [
+                    "-v",
+                    "-race"
+                ],
+                "go.testTimeout": "10s",
+                "go.coverOnSingleTest": true,
+                "go.coverOnSingleTestFile": true,
+                "go.coverOnTestPackage": true,
+                "go.lintTool": "golangci-lint",
+                "go.lintOnSave": "package",
+                "[go]": {
+                    "editor.codeActionsOnSave": {
+                        "source.organizeImports": true
+                    }
+                },
+                "gopls": {
+                    "usePlaceholders": false,
+                    "staticcheck": true,
+                    "vulncheck": "Imports"
+                }
+			},
 			"extensions": [
-				"streetsidesoftware.code-spell-checker"
+				"streetsidesoftware.code-spell-checker",
+				"golang.go",
+                "eamodio.gitlens", // IDE Git information
+                "davidanson.vscode-markdownlint",
+                "shardulm94.trailing-spaces", // Show trailing spaces
+                "Gruntfuggly.todo-tree", // Highlights TODO comments
+                "bierner.emojisense", // Emoji sense for markdown
+                "stkb.rewrap", // rewrap comments after n characters on one line
+                "vscode-icons-team.vscode-icons", // Better file extension icons
+                "github.vscode-pull-request-github", // Github interaction
+                "redhat.vscode-yaml", // Kubernetes, Drone syntax highlighting
+                "bajdzis.vscode-database", // Supports connections to mysql or postgres, over SSL, socked
+                "IBM.output-colorizer", // Colorize your output/test logs
+                "mohsen1.prettify-json"// Prettify JSON data
+                // "jrebocho.vscode-random", // Generates random values
+                // "alefragnani.Bookmarks", // Manage bookmarks
+                // "quicktype.quicktype", // Paste JSON as code
+                // "spikespaz.vscode-smoothtype", // smooth cursor animation
 			]
 		}
 	},
@@ -26,14 +74,18 @@
 	// More info: https://containers.dev/implementors/json_reference/#port-attributes
 	"portsAttributes": {
 		"9000": {
-			"label": "Hello Remote World",
+			"label": "Remote",
 			"onAutoForward": "notify"
 		}
+	},
+
+	"containerEnv": {
+		"MYVARIABLE": "${localEnv:MAVARIABLE}"
 	}
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "go version",
-
+    
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
 }
