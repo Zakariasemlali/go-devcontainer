@@ -1,25 +1,24 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/go
 {
-	"name": "Go",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/go:0-1.19-bullseye",
+    "name": "Go",
+    // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+    "image": "mcr.microsoft.com/devcontainers/go:0-1.19-bullseye",
     // "initializeCommand": "./bootsrap.sh",
     "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
-	// Configure tool-specific properties.
-	"customizations": {
-		// Configure properties specific to VS Code.
-		"vscode": {
-			"settings": {
-				"files.eol":"\n",
-				"editor.formatOnSave": true,
-				"go.buildTags": "",
+    // Features to add to the dev container. More info: https://containers.dev/features.
+    // "features": {},
+    // Configure tool-specific properties.
+    "customizations": {
+        // Configure properties specific to VS Code.
+        "vscode": {
+            "settings": {
+                "files.eol": "\n",
+                "editor.formatOnSave": true,
+                "go.buildTags": "",
                 "go.toolsEnvVars": {
                     "CGO_ENABLED": "0"
                 },
-                "go.useLanguageServer": true,
                 "go.testEnvVars": {
                     "CGO_ENABLED": "1"
                 },
@@ -40,13 +39,46 @@
                 },
                 "gopls": {
                     "usePlaceholders": false,
-                    "staticcheck": true,
-                    "vulncheck": "Imports"
-                }
-			},
-			"extensions": [
-				"streetsidesoftware.code-spell-checker",
-				"golang.go",
+                    "staticcheck": true
+                },
+                "editor.minimap.enabled": false,
+                "editor.tabSize": 2,
+                "editor.wordWrap": "on",
+                "explorer.confirmDelete": false,
+                "extensions.ignoreRecommendations": true,
+                "explorer.confirmDragAndDrop": false,
+                "workbench.sideBar.location": "right",
+                "editor.suggestSelection": "first",
+                "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+                "editor.fontFamily": "Consolas",
+                "editor.fontLigatures": false,
+                "editor.fontSize": 14,
+                "workbench.tree.indent": 10,
+                "workbench.iconTheme": "eq-material-theme-icons",
+                "zenMode.centerLayout": false,
+                "zenMode.hideLineNumbers": false,
+                "explorer.compactFolders": false,
+                "workbench.statusBar.visible": false,
+                "workbench.activityBar.visible": false,
+                "go.toolsManagement.autoUpdate": true,
+                "go.useLanguageServer": true,
+                "errorLens.enabledDiagnosticLevels": [
+                    "warning",
+                    "info",
+                    "error"
+                ],
+                "typescript.updateImportsOnFileMove.enabled": "always",
+                "http.systemCertificates": false,
+                "workbench.colorCustomizations": {},
+                "window.zoomLevel": 1,
+                "Lua.telemetry.enable": false,
+                "editor.inlineSuggest.enabled": true,
+                "workbench.colorTheme": "Community Material Theme Darker High Contrast"
+            },
+            "extensions": [
+                "noxaled.getcodingknowledge-pack",
+                "streetsidesoftware.code-spell-checker",
+                "golang.go",
                 "eamodio.gitlens", // IDE Git information
                 "davidanson.vscode-markdownlint",
                 "shardulm94.trailing-spaces", // Show trailing spaces
@@ -58,34 +90,26 @@
                 "redhat.vscode-yaml", // Kubernetes, Drone syntax highlighting
                 "bajdzis.vscode-database", // Supports connections to mysql or postgres, over SSL, socked
                 "IBM.output-colorizer", // Colorize your output/test logs
-                "mohsen1.prettify-json"// Prettify JSON data
+                "mohsen1.prettify-json" // Prettify JSON data
                 // "jrebocho.vscode-random", // Generates random values
                 // "alefragnani.Bookmarks", // Manage bookmarks
                 // "quicktype.quicktype", // Paste JSON as code
                 // "spikespaz.vscode-smoothtype", // smooth cursor animation
-			]
-		}
-	},
-
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [9000],
-
-	// Use 'portsAttributes' to set default properties for specific forwarded ports. 
-	// More info: https://containers.dev/implementors/json_reference/#port-attributes
-	"portsAttributes": {
-		"9000": {
-			"label": "Remote",
-			"onAutoForward": "notify"
-		}
-	},
-
-	"containerEnv": {
-		"MYVARIABLE": "${localEnv:MAVARIABLE}"
-	}
-
-	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "go version",
-    
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+            ]
+        }
+    },
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // "forwardPorts": [9000],
+    // Use 'portsAttributes' to set default properties for specific forwarded ports. 
+    // More info: https://containers.dev/implementors/json_reference/#port-attributes
+    "portsAttributes": {
+        "9000": {
+            "label": "Remote",
+            "onAutoForward": "notify"
+        }
+    }
+    // Use 'postCreateCommand' to run commands after the container is created.
+    // "postCreateCommand": "go version",
+    // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+    // "remoteUser": "root"
 }
