@@ -6,7 +6,8 @@
     // "image": "mcr.microsoft.com/devcontainers/go:0-1.19-bullseye",
     "dockerFile": "Dockerfile",
     // "initializeCommand": "./bootsrap.sh",
-    "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+    // "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+    "postStartCommand": "./gitconfig.sh",
     // Features to add to the dev container. More info: https://containers.dev/features.
     // "features": {},
     // Configure tool-specific properties.
@@ -14,6 +15,17 @@
         // Configure properties specific to VS Code.
         "vscode": {
             "settings": {
+                // Default shell configuration
+                "terminal.integrated.defaultProfile.linux": "zsh",
+                "terminal.integrated.profiles.linux": {
+                    "bash": {
+                        "path": "/bin/bash",
+                        "icon": "terminal-bash"
+                    },
+                    "zsh": {
+                        "path": "/usr/bin/zsh"
+                    }
+                },
                 "files.eol": "\n",
                 "editor.formatOnSave": true,
                 "go.buildTags": "",
