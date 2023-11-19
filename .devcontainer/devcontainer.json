@@ -6,8 +6,8 @@
     // "image": "mcr.microsoft.com/devcontainers/go:0-1.19-bullseye",
     "dockerFile": "Dockerfile",
     // "initializeCommand": "./bootsrap.sh",
-    // "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
-    "postStartCommand": "./gitconfig.sh",
+    //"postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+    "postStartCommand": "${containerWorkspaceFolder}/.devcontainer/gitconfig.sh",
     // Features to add to the dev container. More info: https://containers.dev/features.
     // "features": {},
     // Configure tool-specific properties.
@@ -118,6 +118,9 @@
             "label": "Remote",
             "onAutoForward": "notify"
         }
+    },
+    "remoteEnv": {
+        "MY_PROJECT_PATH": "${containerWorkspaceFolder}"
     }
     // Use 'postCreateCommand' to run commands after the container is created.
     // "postCreateCommand": "go version",

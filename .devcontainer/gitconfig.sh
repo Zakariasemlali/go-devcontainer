@@ -1,5 +1,7 @@
 #!/bin/bash
-git config --global --add safe.directory ${containerWorkspaceFolder}
+echo "Configuring workspace as safe directory..."
+git config --global --add safe.directory ${MY_PROJECT_PATH}
+echo "${MY_PROJECT_PATH} configured as safe..."
 
 # Alias for 'git status -sb'
 git config --global alias.st "status -sb"
